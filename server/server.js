@@ -12,9 +12,21 @@ app.use(express.json());
 
 // Connect to MongoDB
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shreejiDB";
+console.log("MONGO_URI source:", process.env.MONGO_URI ? "environment variable" : "fallback (localhost)");
 mongoose.connect(MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+  .then(() => console.log("MongoDB Connected successfully to:", MONGO_URI.replace(/\/\/.*@/, '//<credentials>@')))
+  .catch(err => console.log("MongoDB Connection FAILED:", err.message));
+
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+  const dbState = mongoose.connection.readyState;
+  const states = { 0: "disconnected", 1: "connected", 2: "connecting", 3: "disconnecting" };
+  res.json({
+    server: "running",
+    database: states[dbState] || "unknown",
+    mongoUriSource: process.env.MONGO_URI ? "environment variable" : "fallback (localhost)"
+  });
+});
 
 // Appointment Schema
 const appointmentSchema = new mongoose.Schema({
