@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://shree-ji-health-center.onrender.com/api/$1"
+    }
+  ]
+}
