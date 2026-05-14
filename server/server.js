@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 // Save Appointment
-app.post("/book", async (req, res) => {
+app.post("/api/book", async (req, res) => {
   try {
     const appointment = new Appointment(req.body);
     await appointment.save();
@@ -47,7 +47,7 @@ app.post("/book", async (req, res) => {
 });
 
 // Get All Appointments
-app.get("/appointments", async (req, res) => {
+app.get("/api/appointments", async (req, res) => {
   try {
     const appointments = await Appointment.find();
     res.json(appointments);
@@ -56,7 +56,7 @@ app.get("/appointments", async (req, res) => {
   }
 });
 //
-app.put("/appointments/:id", async (req, res) => {
+app.put("/api/appointments/:id", async (req, res) => {
   try {
     const updatedAppointment = await Appointment.findByIdAndUpdate(
       req.params.id,
@@ -70,7 +70,7 @@ app.put("/appointments/:id", async (req, res) => {
   }
 });
 //
-app.delete("/appointments/:id", async (req, res) => {
+app.delete("/api/appointments/:id", async (req, res) => {
   try {
     await Appointment.findByIdAndDelete(req.params.id);
     res.send("Appointment deleted successfully");
@@ -79,7 +79,7 @@ app.delete("/appointments/:id", async (req, res) => {
   }
 });
 //
-app.delete("/appointments/:id", async (req, res) => {
+app.delete("/api/appointments/:id", async (req, res) => {
   try {
     await Appointment.findByIdAndDelete(req.params.id);
     res.send("Appointment deleted successfully");
@@ -88,7 +88,7 @@ app.delete("/appointments/:id", async (req, res) => {
   }
 });
 //
-app.post("/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -118,7 +118,7 @@ app.post("/register", async (req, res) => {
   }
 });
 //
-app.post("/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
