@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shree Ji Health Center – Spiritual & Healing Care</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: Playfair Display (Headings) + Mukta (Hindi + Body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Mukta:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Spiritual + Healing Palette */
+      --ink: #1b1b1b;             /* neutral ink */
+      --ivory: #fffdf7;           /* paper-like background */
+      --saffron: #d97706;         /* saffron (amber-600) */
+      --saffron-700: #b45309;     /* deep saffron */
+      --marigold: #f59e0b;        /* marigold (amber-500) */
+      --gold: #b48b07;            /* gold accent */
+      --forest: #14532d;          /* deep green */
+      --muted: #6b7280;           /* gray-500 */
+    }
+
+    html, body { background: var(--ivory); color: var(--ink); }
+    body { font-family: "Mukta", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+    /* Headings use Playfair Display for devotional elegance */
+    .h-font { font-family: "Playfair Display", Georgia, Cambria, "Times New Roman", serif; }
+
+    /* Hindi helper */
+    .hi { font-family: "Mukta", system-ui, sans-serif; }
+
+    /* Patterned section background */
+    .pattern-soft {
+      background-image:
+        linear-gradient(90deg, rgba(212,163,59,0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(212,163,59,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: center;
+    }
+
+    /* Floral divider (wavey rule) */
+    .floral-divider {
+      height: 10px;
+      background: linear-gradient(90deg, rgba(217,119,6,0.2), rgba(217,119,6,0.55), rgba(217,119,6,0.2));
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="10" viewBox="0 0 400 10"><path d="M0 5 Q25 0 50 5 T100 5 T150 5 T200 5 T250 5 T300 5 T350 5 T400 5" fill="none" stroke="black" stroke-width="2"/></svg>') repeat-x left/400px 10px;
+              mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="10" viewBox="0 0 400 10"><path d="M0 5 Q25 0 50 5 T100 5 T150 5 T200 5 T250 5 T300 5 T350 5 T400 5" fill="none" stroke="black" stroke-width="2"/></svg>') repeat-x left/400px 10px;
+      border-radius: 9999px;
+      opacity: .9;
+    }
+
+    /* Ornamental lotus glyph (SVG background) */
+    .deco-lotus {
+      position: relative;
+      padding-bottom: 12px;
+      display: inline-block;
+    }
+    .deco-lotus::after{
+      content:"";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+      width: 80px; height: 18px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24" fill="none"><path d="M60 2c5 7 14 10 28 10-14 0-23 3-28 10-5-7-14-10-28-10 14 0 23-3 28-10z" fill="%23d97706" opacity="0.65"/><circle cx="60" cy="12" r="2" fill="%23b45309"/></svg>') no-repeat center/contain;
+      opacity: 0.95;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--saffron);
+      color: #fff;
+      border-radius: 14px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      box-shadow: 0 6px 16px rgba(180, 83, 9, 0.2);
+    }
+    .btn-primary:hover { background: var(--saffron-700); transform: translateY(-1px); }
+    .btn-outline {
+      border: 2px solid var(--gold);
+      color: var(--saffron-700);
+      border-radius: 14px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: background .15s ease, color .15s ease, transform .15s ease;
+    }
+    .btn-outline:hover { background: rgba(245, 158, 11, 0.08); transform: translateY(-1px); }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border: 1px solid rgba(217,119,6,0.12);
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(217,119,6,0.08);
+    }
+
+    /* Nav active */
+    .nav-link.active { color: var(--saffron-700); border-bottom: 2px solid var(--saffron-700); font-weight: 700; }
+
+    /* Page visibility */
+    .page-content { display: none; min-height: calc(100vh - 128px); padding-top: 80px; }
+    .active-page { display: block; animation: fadeIn .4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
+
+    /* Hero image frame */
+    
+    .hero-frame{
+      background: linear-gradient(180deg, #fff, #fff9ee);
+      border-radius: 24px;
+      border: 1px solid rgba(217,119,6,0.18);
+      box-shadow: 0 10px 30px rgba(217,119,6,0.12);
+      overflow: hidden;
+    }
+    .hero-frame img{ display:block; width:100%; height:340px; object-fit:cover; }
+    .hero-caption{
+      text-align:center; font-size:12px; color:#6b7280; padding:8px 0 10px;
+      background: linear-gradient(90deg, #fff9ee, #fff);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <!-- Logo Section -->
+<div class="flex flex-col items-start md:items-center">
+  <a href="#home" class="flex items-center nav-link tracking-wide font-bold text-3xl" data-page="home">
+    <span class="text-amber-600">🕉️ Shree Ji</span>
+    <span class="ml-2 text-emerald-700">Health Center</span>
+  </a>
+
+  <!-- Radhe Radhe Line -->
+  <p class="text-pink-600 text-lg font-semibold italic mt-1 animate-pulse">
+    राधे राधे 💫 राधे राधे 💫
+  </p>
+</div>
+
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8 text-[15px]">
+          <a href="#home" data-page="home" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">Home</a>
+          <a href="#services" data-page="services" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">Services</a>
+          <a href="#doctors" data-page="doctors" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">Find a Doctor</a>
+          <a href="#about" data-page="about" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">About Us</a>
+          <a href="#resources" data-page="resources" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">Resources</a>
+          <a href="#auth-section" data-page="auth-section" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">Signup/Login</a>
+          <a href="#contact" data-page="contact" class="nav-link text-gray-700 hover:text-[color:var(--saffron-700)]">Contact</a>
+        </nav>
+
+        <a href="#appointment" data-page="appointment" class="nav-link hidden md:inline-block btn-primary">Book Appointment</a>
+
+        <!-- Mobile menu btn -->
+        <button id="mobile-menu-button" class="md:hidden p-2 text-gray-600 hover:text-[color:var(--saffron-700)]" aria-label="Menu">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-4 py-2 flex flex-col">
+        <a class="nav-link px-2 py-2 text-gray-700 hover:bg-amber-50 rounded" data-page="home" href="#home">Home</a>
+        <a class="nav-link px-2 py-2 text-gray-700 hover:bg-amber-50 rounded" data-page="services" href="#services">Services</a>
+        <a class="nav-link px-2 py-2 text-gray-700 hover:bg-amber-50 rounded" data-page="doctors" href="#doctors">Find a Doctor</a>
+        <a class="nav-link px-2 py-2 text-gray-700 hover:bg-amber-50 rounded" data-page="about" href="#about">About Us</a>
+        <a class="nav-link px-2 py-2 text-gray-700 hover:bg-amber-50 rounded" data-page="resources" href="#resources">Resources</a>
+        <a class="nav-link px-2 py-2 text-white rounded mt-2" data-page="appointment" href="#appointment" style="background: var(--saffron)">Book Appointment</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+      <!-- 1) Home -->
+      <section id="home" class="page-content active-page">
+        <div class="pattern-soft rounded-3xl border p-8 md:p-12">
+          <div class="md:grid md:grid-cols-2 md:gap-10 md:items-center">
+            <div>
+              <h1 class="h-font text-5xl lg:text-6xl font-extrabold leading-tight deco-lotus">
+                Healing with Compassion & Faith
+                <span class="block hi text-[28px] lg:text-[34px] font-semibold mt-2">
+                  करुणा और आस्था के साथ उपचार
+                </span>
+              </h1>
+
+              <div class="floral-divider my-5"></div>
+
+              <p class="text-lg text-gray-700">
+                Family-centered care guided by tradition and powered by modern science.
+                <span class="block hi">परिवार-केंद्रित देखभाल—परंपरा से प्रेरित, आधुनिक चिकित्सा से समर्थित।</span>
+              </p>
+
+              <!-- Shloka card -->
+              <div class="mt-6 p-5 rounded-2xl card border-l-4" style="border-left-color: var(--saffron)">
+                <p class="hi text-lg italic">“धर्मार्थकाममोक्षाणां आरोग्यं मूलमुत्तमम्”</p>
+                <p class="text-sm text-[color:var(--muted)]">Good health is the root of Dharma, Artha, Kama, Moksha.</p>
+              </div>
+
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a href="#appointment" data-page="appointment" class="nav-link btn-primary">Book Online</a>
+                <a href="#services" data-page="services" class="nav-link btn-outline">Our Services</a>
+              </div>
+            </div>
+
+            <!-- Hero Image Placeholder with frame -->
+            <div class="mt-10 md:mt-0">
+             <figure class="hero-frame">
+  <img src="https://m.media-amazon.com/images/I/819MQtWPpAL._AC_UF894,1000_QL80_.jpg"
+       alt="Premanand Ji Maharaj"
+       style="width:100%; height:400px; object-fit:cover; border-radius:1rem; box-shadow:0 10px 20px rgba(0,0,0,0.2);">
+  <figcaption class="hero-caption text-center text-gray-600 mt-2">
+    🙏 Shri Premanand Ji Maharaj 🙏 <br>
+    <span class="text-sm">May His blessings guide your path to health & happiness.</span>
+  </figcaption>
+</figure>
+
+            </div>
+          </div>
+
+          <!-- Three Key Features -->
+          <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <div class="card p-6 border-t-4" style="border-top-color: var(--marigold)">
+              <h3 class="h-font text-xl font-bold mb-2 deco-lotus">24×7 Seva</h3>
+              <p class="text-gray-700">Quick response — हर समय आपकी सेवा में तत्पर।</p>
+            </div>
+            <div class="card p-6 border-t-4" style="border-top-color: var(--saffron)">
+              <h3 class="h-font text-xl font-bold mb-2 deco-lotus">Trusted Specialists</h3>
+              <p class="text-gray-700">Experienced doctors with personal attention.</p>
+            </div>
+            <div class="card p-6 border-t-4" style="border-top-color: var(--gold)">
+              <h3 class="h-font text-xl font-bold mb-2 deco-lotus">Compassion-Led Healing</h3>
+              <p class="text-gray-700">Where care meets devotion — सेवा ही आधार।</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2) Services (FULL extended + pricing) -->
+      <section id="services" class="page-content">
+        <h2 class="h-font text-4xl font-extrabold text-center deco-lotus">Our Services / हमारी सेवाएँ</h2>
+        <div class="floral-divider my-6"></div>
+        <p class="text-center text-gray-700 mb-8">Preventive to super-specialty — प्राथमिक से विशेष उपचार तक सम्पूर्ण देखभाल।</p>
+
+        <!-- 12-service grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- 1 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--saffron)">
+            <h3 class="h-font text-2xl mb-1">General Practice</h3>
+            <p class="text-sm text-gray-600 mb-3">Family medicine, annual checkups, lifestyle counselling.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>BP/Sugar monitoring, diet & sleep coaching</li>
+              <li class="hi">रूटीन चेकअप, शुगर/बीपी मॉनिटरिंग</li>
+            </ul>
+          </div>
+          <!-- 2 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--marigold)">
+            <h3 class="h-font text-2xl mb-1">Cardiology</h3>
+            <p class="text-sm text-gray-600 mb-3">ECG, Echo, TMT, hypertension & heart failure clinics.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Chest pain evaluation, lipid profile review</li>
+              <li class="hi">हृदय जाँच, ब्लड प्रेशर नियंत्रण</li>
+            </ul>
+          </div>
+          <!-- 3 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--gold)">
+            <h3 class="h-font text-2xl mb-1">Pediatrics</h3>
+            <p class="text-sm text-gray-600 mb-3">Vaccinations, growth & nutrition, common illnesses.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Immunization schedule guidance</li>
+              <li class="hi">टीकाकरण, बच्चों का विकास</li>
+            </ul>
+          </div>
+          <!-- 4 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--saffron-700)">
+            <h3 class="h-font text-2xl mb-1">Dermatology</h3>
+            <p class="text-sm text-gray-600 mb-3">Acne, allergies, hair & scalp care, minor procedures.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Skin infections, eczema, psoriasis</li>
+              <li class="hi">मुहांसे, एलर्जी, त्वचा देखभाल</li>
+            </ul>
+          </div>
+          <!-- 5 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--marigold)">
+            <h3 class="h-font text-2xl mb-1">Urgent Care (Same Day)</h3>
+            <p class="text-sm text-gray-600 mb-3">Fever, injuries, infections; quick treatment without wait.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>On-spot dressings & injections</li>
+              <li class="hi">त्वरित इलाज: बुखार/चोट/संक्रमण</li>
+            </ul>
+          </div>
+          <!-- 6 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--gold)">
+            <h3 class="h-font text-2xl mb-1">Maternity & Women’s Health</h3>
+            <p class="text-sm text-gray-600 mb-3">Antenatal care, scans, PCOS guidance, postnatal support.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Healthy pregnancy counselling</li>
+              <li class="hi">गर्भावस्था देखभाल, प्रसवोत्तर सहयोग</li>
+            </ul>
+          </div>
+          <!-- 7 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--saffron)">
+            <h3 class="h-font text-2xl mb-1">Neurology</h3>
+            <p class="text-sm text-gray-600 mb-3">Headache, stroke rehab, epilepsy, neuropathies.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>EEG coordination, neuro-rehab</li>
+              <li class="hi">माइग्रेन, नसों की समस्याएँ</li>
+            </ul>
+          </div>
+          <!-- 8 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--marigold)">
+            <h3 class="h-font text-2xl mb-1">Dental Care</h3>
+            <p class="text-sm text-gray-600 mb-3">Cleaning, fillings, RCT, extractions, smile care.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Cosmetic dentistry options</li>
+              <li class="hi">दाँतों की सफाई व उपचार</li>
+            </ul>
+          </div>
+          <!-- 9 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--gold)">
+            <h3 class="h-font text-2xl mb-1">Orthopedics & Physio</h3>
+            <p class="text-sm text-gray-600 mb-3">Joint pain, sports injuries, post-op rehab.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Back & knee rehab programs</li>
+              <li class="hi">हड्डी/जोड़ दर्द, फिजियोथेरेपी</li>
+            </ul>
+          </div>
+          <!-- 10 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--saffron-700)">
+            <h3 class="h-font text-2xl mb-1">Radiology & Imaging</h3>
+            <p class="text-sm text-gray-600 mb-3">Digital X-ray, Ultrasound, Echo (tie-ups where needed).</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Fast reports, expert reads</li>
+              <li class="hi">एक्स-रे, अल्ट्रासाउंड, इको</li>
+            </ul>
+          </div>
+          <!-- 11 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--marigold)">
+            <h3 class="h-font text-2xl mb-1">Diabetes & Thyroid Clinic</h3>
+            <p class="text-sm text-gray-600 mb-3">Sugar/thyroid management, diet plans, foot care.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Continuous monitoring & counselling</li>
+              <li class="hi">शुगर/थायरॉइड नियंत्रण</li>
+            </ul>
+          </div>
+          <!-- 12 -->
+          <div class="card p-6 border-b-4" style="border-bottom-color: var(--gold)">
+            <h3 class="h-font text-2xl mb-1">Eye Care (Ophthalmology)</h3>
+            <p class="text-sm text-gray-600 mb-3">Vision testing, cataract guidance, dry-eye solutions.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Refraction & basic retina screening</li>
+              <li class="hi">आँखों की जाँच व उपचार</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- How we treat + Diagnostics -->
+        <div class="mt-10 grid md:grid-cols-2 gap-7">
+          <div class="card p-6">
+            <h3 class="h-font text-2xl mb-2 deco-lotus">How We Treat / हमारा दृष्टिकोण</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>Evidence-based medicine with personalized plans</li>
+              <li>Multidisciplinary reviews for complex issues</li>
+              <li>Home-care guidance & follow-ups</li>
+              <li class="hi">प्रमाण-आधारित उपचार, व्यक्तिगत योजना</li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="h-font text-2xl mb-2 deco-lotus">Diagnostics, Pharmacy & Tele-Consult</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>On-site sample collection; fast reports</li>
+              <li>In-house pharmacy (essentials)</li>
+              <li>Tele-consult for follow-ups</li>
+              <li class="hi">जाँच, दवाएँ व वीडियो-कन्सल्ट — एक जगह</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 card p-6 bg-amber-50 border border-amber-200">
+          <h3 class="h-font text-xl mb-2 deco-lotus">Insurance & Payment / बीमा व भुगतान</h3>
+          <p class="text-gray-700">Most major insurance plans accepted; cashless where applicable.</p>
+          <p class="hi text-gray-700">अधिकांश बीमा स्वीकार — जहाँ संभव हो कैशलेस सुविधा।</p>
+        </div>
+
+        <!-- Packages & Pricing -->
+        <div class="mt-12">
+          <h3 class="h-font text-3xl text-center deco-lotus">Packages & Pricing / पैकेज व मूल्य</h3>
+          <div class="floral-divider my-6"></div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card p-6 border-t-4" style="border-top-color: var(--saffron)">
+              <div class="flex items-center justify-between">
+                <h4 class="h-font text-xl">Heart Check – Basic</h4>
+                <span class="text-xs px-2 py-1 rounded-full text-white" style="background: var(--forest)">Popular</span>
+              </div>
+              <p class="text-2xl font-extrabold mt-1">₹1,499</p>
+              <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+                <li>Consult + BP/ECG</li><li>Lipid Profile, Fasting Sugar</li><li class="hi">हृदय बेसिक स्क्रीनिंग</li>
+              </ul>
+              <a href="#appointment" data-page="appointment" class="nav-link btn-primary mt-4 inline-block text-center w-full">Book Now</a>
+            </div>
+
+            <div class="card p-6 border-t-4" style="border-top-color: var(--marigold)">
+              <h4 class="h-font text-xl">Heart Check – Advanced</h4>
+              <p class="text-2xl font-extrabold mt-1">₹3,499</p>
+              <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+                <li>Cardio Consult + ECG + Echo</li><li>TMT, HBA1c, CRP</li><li class="hi">एडवांस हार्ट स्क्रीनिंग</li>
+              </ul>
+              <a href="#appointment" data-page="appointment" class="nav-link btn-outline mt-4 inline-block text-center w-full">Book Now</a>
+            </div>
+
+            <div class="card p-6 border-t-4" style="border-top-color: var(--gold)">
+              <h4 class="h-font text-xl">Diabetes Care – 3 Months</h4>
+              <p class="text-2xl font-extrabold mt-1">₹2,499</p>
+              <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+                <li>3 Consults + Diet Plan</li><li>HBA1c, FBS/PPBS (x2)</li><li class="hi">शुगर नियंत्रण कार्यक्रम</li>
+              </ul>
+              <a href="#appointment" data-page="appointment" class="nav-link btn-primary mt-4 inline-block text-center w-full">Enroll</a>
+            </div>
+
+            <div class="card p-6 border-t-4" style="border-top-color: var(--marigold)">
+              <h4 class="h-font text-xl">Wellness – Full Body</h4>
+              <p class="text-2xl font-extrabold mt-1">₹2,999</p>
+              <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+                <li>CBC, LFT, KFT, Thyroid, Vit-D/B12</li><li>Urine Routine, Chest X-ray</li><li class="hi">सम्पूर्ण स्वास्थ्य जाँच</li>
+              </ul>
+              <a href="#appointment" data-page="appointment" class="nav-link btn-outline mt-4 inline-block text-center w-full">Book Now</a>
+            </div>
+
+            <div class="card p-6 border-t-4" style="border-top-color: var(--saffron)">
+              <h4 class="h-font text-xl">Child Care – Immunization</h4>
+              <p class="text-2xl font-extrabold mt-1">From ₹799</p>
+              <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+                <li>Vaccine counselling</li><li>Growth & Nutrition check</li><li class="hi">टीकाकरण पैकेज</li>
+              </ul>
+              <a href="#appointment" data-page="appointment" class="nav-link btn-primary mt-4 inline-block text-center w-full">Schedule</a>
+            </div>
+
+            <div class="card p-6 border-t-4" style="border-top-color: var(--gold)">
+              <h4 class="h-font text-xl">Tele-Consult – Monthly</h4>
+              <p class="text-2xl font-extrabold mt-1">₹599</p>
+              <ul class="mt-3 list-disc list-inside text-gray-700 space-y-1">
+                <li>2 Video consults + e-Prescription</li><li>WhatsApp follow-up (business hrs)</li><li class="hi">वीडियो कन्सल्ट पैक</li>
+              </ul>
+              <a href="#appointment" data-page="appointment" class="nav-link btn-outline mt-4 inline-block text-center w-full">Start</a>
+            </div>
+          </div>
+
+          <!-- Compact table -->
+          <div class="mt-8 overflow-auto card">
+            <table class="min-w-full">
+              <thead class="bg-amber-50 text-left text-sm">
+                <tr>
+                  <th class="px-4 py-3 h-font">Package</th>
+                  <th class="px-4 py-3 h-font">Includes</th>
+                  <th class="px-4 py-3 h-font">Price</th>
+                  <th class="px-4 py-3"></th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr class="border-t">
+                  <td class="px-4 py-3">Heart Basic</td>
+                  <td class="px-4 py-3">Consult, ECG, Lipid, FBS</td>
+                  <td class="px-4 py-3 font-semibold">₹1,499</td>
+                  <td class="px-4 py-3"><a href="#appointment" data-page="appointment" class="nav-link underline" style="color: var(--saffron)">Book</a></td>
+                </tr>
+                <tr class="border-t">
+                  <td class="px-4 py-3">Heart Advanced</td>
+                  <td class="px-4 py-3">ECG, Echo, TMT, HBA1c</td>
+                  <td class="px-4 py-3 font-semibold">₹3,499</td>
+                  <td class="px-4 py-3"><a href="#appointment" data-page="appointment" class="nav-link underline" style="color: var(--marigold)">Book</a></td>
+                </tr>
+                <tr class="border-t">
+                  <td class="px-4 py-3">Full Body</td>
+                  <td class="px-4 py-3">CBC, LFT, KFT, Thyroid, Vit-D/B12</td>
+                  <td class="px-4 py-3 font-semibold">₹2,999</td>
+                  <td class="px-4 py-3"><a href="#appointment" data-page="appointment" class="nav-link underline" style="color: var(--gold)">Book</a></td>
+                </tr>
+                <tr class="border-t">
+                  <td class="px-4 py-3">Diabetes 3M</td>
+                  <td class="px-4 py-3">3 Consults, HBA1c, FBS/PPBS x2</td>
+                  <td class="px-4 py-3 font-semibold">₹2,499</td>
+                  <td class="px-4 py-3"><a href="#appointment" data-page="appointment" class="nav-link underline" style="color: var(--saffron-700)">Book</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-xs text-gray-500 px-4 py-3">*Prices are indicative; taxes extra where applicable. Tie-up tests billed per partner rates.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) Doctors (FULL list themed) -->
+      <section id="doctors" class="page-content">
+        <h2 class="h-font text-4xl font-extrabold text-center deco-lotus">Meet Our Expert Team</h2>
+        <div class="floral-divider my-6"></div>
+
+        <div class="card p-6 mb-8">
+          <input id="doctor-search" type="text" placeholder="Search by name or specialty (e.g., Dr. Asha, Cardiologist)"
+                 class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-amber-300 focus:outline-none"/>
+        </div>
+
+        <div id="doctor-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- 14 doctors -->
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--saffron)">
+            <img src="https://placehold.co/80x80/f59e0b/ffffff?text=AM" class="rounded-full w-20 h-20 object-cover" alt="Dr. Asha Mehta"/>
+            <div><h4 class="h-font text-xl">Dr. Asha Mehta</h4><p class="text-[color:var(--saffron-700)]">Cardiologist</p><p class="text-sm text-gray-500">15 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--gold)">
+            <img src="https://placehold.co/80x80/fbbf24/ffffff?text=RP" class="rounded-full w-20 h-20 object-cover" alt="Dr. Rohan Patel"/>
+            <div><h4 class="h-font text-xl">Dr. Rohan Patel</h4><p class="text-[color:var(--gold)]">General Practitioner</p><p class="text-sm text-gray-500">10 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--marigold)">
+            <img src="https://placehold.co/80x80/f59e0b/ffffff?text=PK" class="rounded-full w-20 h-20 object-cover" alt="Dr. Priya Kapoor"/>
+            <div><h4 class="h-font text-xl">Dr. Priya Kapoor</h4><p class="text-[color:var(--marigold)]">Pediatrician</p><p class="text-sm text-gray-500">8 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--saffron-700)">
+            <img src="https://placehold.co/80x80/f59e0b/ffffff?text=AV" class="rounded-full w-20 h-20 object-cover" alt="Dr. Aman Verma"/>
+            <div><h4 class="h-font text-xl">Dr. Aman Verma</h4><p class="text-[color:var(--saffron-700)]">Dermatologist</p><p class="text-sm text-gray-500">12 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--marigold)">
+            <img src="https://placehold.co/80x80/f59e0b/ffffff?text=NK" class="rounded-full w-20 h-20 object-cover" alt="Dr. Neha Khanna"/>
+            <div><h4 class="h-font text-xl">Dr. Neha Khanna</h4><p class="text-[color:var(--marigold)]">Gynecologist</p><p class="text-sm text-gray-500">14 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--forest)">
+            <img src="https://placehold.co/80x80/14532d/ffffff?text=SR" class="rounded-full w-20 h-20 object-cover" alt="Dr. Suresh Rao"/>
+            <div><h4 class="h-font text-xl">Dr. Suresh Rao</h4><p class="text-[color:var(--forest)]">Orthopedic Surgeon</p><p class="text-sm text-gray-500">18 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--saffron)">
+            <img src="https://placehold.co/80x80/d97706/ffffff?text=RT" class="rounded-full w-20 h-20 object-cover" alt="Dr. Rajeev Thakur"/>
+            <div><h4 class="h-font text-xl">Dr. Rajeev Thakur</h4><p class="text-[color:var(--saffron)]">Neurologist</p><p class="text-sm text-gray-500">20 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--gold)">
+            <img src="https://placehold.co/80x80/b48b07/ffffff?text=AS" class="rounded-full w-20 h-20 object-cover" alt="Dr. Aarti Sharma"/>
+            <div><h4 class="h-font text-xl">Dr. Aarti Sharma</h4><p class="text-[color:var(--gold)]">Dentist</p><p class="text-sm text-gray-500">9 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--saffron-700)">
+            <img src="https://placehold.co/80x80/b45309/ffffff?text=MK" class="rounded-full w-20 h-20 object-cover" alt="Dr. Manish Kumar"/>
+            <div><h4 class="h-font text-xl">Dr. Manish Kumar</h4><p class="text-[color:var(--saffron-700)]">ENT Specialist</p><p class="text-sm text-gray-500">11 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--marigold)">
+            <img src="https://placehold.co/80x80/f59e0b/ffffff?text=SD" class="rounded-full w-20 h-20 object-cover" alt="Dr. Sneha Dutta"/>
+            <div><h4 class="h-font text-xl">Dr. Sneha Dutta</h4><p class="text-[color:var(--marigold)]">Ophthalmologist</p><p class="text-sm text-gray-500">7 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--gold)">
+            <img src="https://placehold.co/80x80/fbbf24/ffffff?text=VS" class="rounded-full w-20 h-20 object-cover" alt="Dr. Vikram Singh"/>
+            <div><h4 class="h-font text-xl">Dr. Vikram Singh</h4><p class="text-[color:var(--gold)]">Radiologist</p><p class="text-sm text-gray-500">16 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--forest)">
+            <img src="https://placehold.co/80x80/14532d/ffffff?text=KM" class="rounded-full w-20 h-20 object-cover" alt="Dr. Kavita Mishra"/>
+            <div><h4 class="h-font text-xl">Dr. Kavita Mishra</h4><p class="text-[color:var(--forest)]">Psychiatrist</p><p class="text-sm text-gray-500">13 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--saffron)">
+            <img src="https://placehold.co/80x80/d97706/ffffff?text=AG" class="rounded-full w-20 h-20 object-cover" alt="Dr. Ankit Gupta"/>
+            <div><h4 class="h-font text-xl">Dr. Ankit Gupta</h4><p class="text-[color:var(--saffron)]">Oncologist</p><p class="text-sm text-gray-500">17 years</p></div>
+          </div>
+          <div class="card p-6 flex items-center gap-4 border-l-4" style="border-left-color: var(--gold)">
+            <img src="https://placehold.co/80x80/b48b07/ffffff?text=NJ" class="rounded-full w-20 h-20 object-cover" alt="Dr. Nidhi Joshi"/>
+            <div><h4 class="h-font text-xl">Dr. Nidhi Joshi</h4><p class="text-[color:var(--gold)]">Nutritionist</p><p class="text-sm text-gray-500">6 years</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) About (FULL extended) -->
+      <section id="about" class="page-content">
+        <h2 class="h-font text-4xl font-extrabold text-center deco-lotus">About Us / हमारे बारे में</h2>
+        <div class="floral-divider my-6"></div>
+        <p class="text-center text-gray-700 mb-8">Care rooted in compassion — करुणा और सेवा पर आधारित भरोसेमंद उपचार।</p>
+
+        <div class="space-y-8">
+          <!-- Mission & Vision -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-6">
+              <h3 class="h-font text-2xl mb-2">Our Mission / हमारा उद्देश्य</h3>
+              <p class="text-gray-700">Accessible, high-quality, patient-first healthcare for every family.
+                <span class="hi block">हर परिवार तक सुलभ, उच्च-गुणवत्ता और रोगी-प्रथम स्वास्थ्य सेवाएँ।</span>
+              </p>
+            </div>
+            <div class="card p-6">
+              <h3 class="h-font text-2xl mb-2">Our Vision / हमारी दृष्टि</h3>
+              <p class="text-gray-700">A community where preventive care and compassionate healing are everyday habits.
+                <span class="hi block">ऐसा समुदाय जहाँ निवारक देखभाल और सहानुभूतिपूर्ण उपचार आदत बनें।</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Values -->
+          <div class="card p-6">
+            <h3 class="h-font text-2xl mb-3">Values / हमारे मूल्य</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="border-l-4 pl-4" style="border-left-color: var(--saffron)"><h4 class="h-font text-xl">Innovation</h4><p class="text-gray-700">Tech-enabled diagnostics, digital records.</p></div>
+              <div class="border-l-4 pl-4" style="border-left-color: var(--marigold)"><h4 class="h-font text-xl">Compassion</h4><p class="text-gray-700">Respect, dignity, empathy for all.</p></div>
+              <div class="border-l-4 pl-4" style="border-left-color: var(--gold)"><h4 class="h-font text-xl">Integrity</h4><p class="text-gray-700">Ethical practice, transparent billing.</p></div>
+            </div>
+          </div>
+
+          <!-- Accreditations & Facilities -->
+          <div class="grid lg:grid-cols-2 gap-8">
+            <div class="card p-6">
+              <h3 class="h-font text-2xl mb-3">Accreditations / मान्यताएँ</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li>Empanelled with major TPAs & insurance networks</li>
+                <li>Infection control & safety protocols aligned to NABH standards</li>
+                <li>Regular clinical audits & doctor peer-reviews</li>
+                <li class="hi">प्रमुख टीपीए/बीमा नेटवर्क से संबद्ध; NABH अनुरूप प्रक्रियाएँ</li>
+              </ul>
+            </div>
+            <div class="card p-6">
+              <h3 class="h-font text-2xl mb-3">Facilities / सुविधाएँ</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li>Day-care procedure rooms, observation beds</li>
+                <li>Digital records, SMS/WhatsApp reminders</li>
+                <li>Wheelchair access, senior-citizen priority desk</li>
+                <li class="hi">डे-केयर, डिजिटल रिकॉर्ड, व्हीलचेयर सुविधा</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Leadership & Team -->
+          <div class="card p-6">
+            <h3 class="h-font text-2xl mb-3">Leadership & Team / नेतृत्व एवं टीम</h3>
+            <p class="text-gray-700">
+              Senior consultants mentor multi-disciplinary teams to ensure each case gets the right expertise.
+              <span class="hi block">वरिष्ठ विशेषज्ञ पूरी टीम का मार्गदर्शन करते हैं ताकि हर रोगी को सही उपचार मिले।</span>
+            </p>
+          </div>
+
+          <!-- CSR & Community -->
+          <div class="card p-6">
+            <h3 class="h-font text-2xl mb-3">Community & CSR / समुदाय एवं सेवा</h3>
+            <p class="text-gray-700">
+              Free health camps, school wellness drives, and awareness sessions on lifestyle diseases.
+              <span class="hi block">निःशुल्क हेल्थ कैंप, स्कूल वेलनेस ड्राइव और जागरूकता सत्र।</span>
+            </p>
+          </div>
+
+          <!-- Timeline -->
+          <div class="card p-6 bg-amber-50/50 border border-amber-200">
+            <h3 class="h-font text-xl mb-3 deco-lotus">Our Journey / हमारी यात्रा</h3>
+            <div class="grid md:grid-cols-3 gap-4 text-gray-700">
+              <div><p class="font-bold">1998</p><p>Started as a family clinic</p></div>
+              <div><p class="font-bold">2010</p><p>Expanded into multi-specialty OPD</p></div>
+              <div><p class="font-bold">2025</p><p>Digital patient portal & tele-consult roll-out</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) Resources -->
+      <section id="resources" class="page-content">
+        <h2 class="h-font text-4xl font-extrabold text-center deco-lotus">Resources / संसाधन</h2>
+        <div class="floral-divider my-6"></div>
+        <p class="text-center text-gray-700 mb-8">Simple guides, FAQs and tips — आसान मार्गदर्शिका व स्वास्थ्य सुझाव।</p>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- FAQ -->
+          <div class="lg:col-span-2 card p-6">
+            <h3 class="h-font text-2xl mb-3" style="color: var(--saffron)">FAQs / सामान्य प्रश्न</h3>
+            <div class="space-y-4">
+              <details class="bg-amber-50/50 p-4 rounded-xl cursor-pointer border border-amber-100">
+                <summary class="font-semibold">First visit? / पहली विज़िट?</summary>
+                <p class="pt-2 text-gray-700">ID, insurance card (if any), previous prescriptions/tests.</p>
+              </details>
+              <details class="bg-amber-50/50 p-4 rounded-xl cursor-pointer border border-amber-100">
+                <summary class="font-semibold">Insurance accepted?</summary>
+                <p class="pt-2 text-gray-700">Most major plans accepted; call billing for confirmation.</p>
+              </details>
+              <details class="bg-amber-50/50 p-4 rounded-xl cursor-pointer border border-amber-100">
+                <summary class="font-semibold">Medical records?</summary>
+                <p class="pt-2 text-gray-700">Access via our secure Patient Portal.</p>
+              </details>
+              <details class="bg-amber-50/50 p-4 rounded-xl cursor-pointer border border-amber-100">
+                <summary class="font-semibold">Same-day appointments?</summary>
+                <p class="pt-2 text-gray-700">Available for Urgent Care (limited slots).</p>
+              </details>
+            </div>
+          </div>
+
+          <!-- Tips + Downloads -->
+          <div class="card p-6">
+            <h3 class="h-font text-2xl mb-3">Health Tips / स्वास्थ्य सुझाव</h3>
+            <ul class="space-y-2 mb-6">
+              <li><a href="#" class="underline" style="color: var(--saffron)">Immunity: Diet + Sleep basics</a></li>
+              <li><a href="#" class="underline" style="color: var(--marigold)">BP & Sugar: Home monitoring</a></li>
+              <li><a href="#" class="underline" style="color: var(--gold)">Child Vaccination Schedule</a></li>
+              <li><a href="#" class="underline" style="color: var(--saffron-700)">Stress & Mind Care</a></li>
+            </ul>
+
+            <h4 class="h-font text-lg mb-2">Downloads / डाउनलोड</h4>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li><a href="#" class="underline">New Patient Form (PDF)</a></li>
+              <li><a href="#" class="underline">Insurance Empanelment List (PDF)</a></li>
+              <li><a href="#" class="underline">Medical Records Request (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) Contact -->
+      <section id="contact" class="page-content">
+        <h2 class="h-font text-4xl font-extrabold text-center deco-lotus">Get in Touch</h2>
+        <div class="floral-divider my-6"></div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="card p-8">
+            <h3 class="h-font text-2xl mb-4">Send us a Message</h3>
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm">Full Name</label>
+                <input id="name" type="text" required class="mt-1 w-full p-3 border rounded-lg focus:ring-2 focus:ring-amber-300 focus:outline-none">
+              </div>
+              <div>
+                <label for="email" class="block text-sm">Email Address</label>
+                <input id="email" type="email" required class="mt-1 w-full p-3 border rounded-lg focus:ring-2 focus:ring-amber-300 focus:outline-none">
+              </div>
+              <div>
+                <label for="message" class="block text-sm">Message</label>
+                <textarea id="message" rows="4" required class="mt-1 w-full p-3 border rounded-lg focus:ring-2 focus:ring-amber-300 focus:outline-none"></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full">Send Message</button>
+              <div id="contact-message" class="text-center mt-3 p-3 hidden rounded-lg"></div>
+            </form>
+          </div>
+
+          <div class="space-y-6">
+            <div class="card p-8">
+              <h3 class="h-font text-2xl mb-2">Our Main Office</h3>
+              <p class="font-semibold">Shree Ji Health Center</p>
+              <p>2nd Floor, Plot No. 14, MG Road, Sector 12</p>
+              <p>Gurugram, Haryana – 122001</p>
+              <p class="mt-2 font-semibold" style="color: var(--saffron)">Phone: +91 9636739142</p>
+              <p class="font-semibold" style="color: var(--saffron)">Email: info@shreejihealth.com</p>
+
+              <div class="mt-3">
+                <p class="font-bold">Visiting Hours</p>
+                <p>Mon – Fri: 8:00 AM – 6:00 PM</p>
+                <p>Sat: 9:00 AM – 1:00 PM (Urgent Care Only)</p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden border">
+              <iframe class="w-full h-64 border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.175199613775!2d77.04843987532062!3d28.62486157567464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18f4b7c94e6b%3A0x6c826a6dcb4826b1!2sMG%20Road%2C%20Sector%2012%2C%20Gurugram%2C%20Haryana%20122001!5e0!3m2!1sen!2sin!4v1730828200000!5m2!1sen!2sin">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+
+      <!-- 7) Appointment -->
+      <section id="appointment" class="page-content">
+        <div class="max-w-xl mx-auto">
+          <h2 class="h-font text-4xl font-extrabold text-center deco-lotus">Book Your Appointment</h2>
+          <div class="floral-divider my-6"></div>
+
+          <div class="card p-8">
+            <form id="appointment-form" class="space-y-6">
+              <div>
+                <label for="appt-name" class="block text-sm">Patient Name</label>
+                <input id="appt-name" type="text" required class="mt-1 w-full p-3 border rounded-lg focus:ring-2 focus:ring-amber-300 focus:outline-none">
+              </div>
+              <div>
+                <label for="appt-service" class="block text-sm">Service Needed</label>
+                <select id="appt-service" required class="mt-1 w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-amber-300 focus:outline-none">
+                  <option value="">Select Service</option>
+                  <option value="General Practice">General Practice Check-up</option>
+                  <option value="Cardiology">Cardiology Consultation</option>
+                  <option value="Pediatrics">Pediatric Visit</option>
+                  <option value="UrgentCare">Urgent Care (Same Day)</option>
+                </select>
+              </div>
+              <div>
+                <label for="appt-date" class="block text-sm">Preferred Date</label>
+                <input id="appt-date" type="date" required class="mt-1 w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-amber-300 focus:outline-none">
+              </div>
+              <div>
+                <label for="appt-time" class="block text-sm">Preferred Time Slot</label>
+                <input id="appt-time" type="time" required class="mt-1 w-full p-3 border rounded-lg bg-white focus:ring-2 focus:ring-amber-300 focus:outline-none">
+              </div>
+
+              <button type="submit" class="btn-primary w-full">Confirm Booking</button>
+              <div id="appointment-message" class="text-center mt-3 p-3 hidden rounded-lg"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+     <!-- ================= AUTH SECTION START ================= -->
+<section id="auth-section" class="page-content py-16">
+  <div class="max-w-md mx-auto">
+    <div class="card p-8 rounded-3xl shadow-xl border border-amber-200">
+
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <div class="text-4xl text-amber-500 mb-3">🪷</div>
+        <h2 class="h-font text-4xl md:text-5xl font-extrabold text-amber-900 mb-3">
+          Welcome
+        </h2>
+        <div class="w-40 h-0.5 bg-amber-300 mx-auto mb-4"></div>
+        <p class="text-gray-600">
+          Sign up to create an account or log in to continue.
+        </p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex mb-6 bg-amber-50 rounded-xl p-1">
+        <button
+          type="button"
+          id="show-signup"
+          class="auth-tab flex-1 py-3 rounded-lg font-bold text-white"
+          style="background: linear-gradient(to right, #f97316, #f59e0b);"
+        >
+          Sign Up
+        </button>
+
+        <button
+          type="button"
+          id="show-login"
+          class="auth-tab flex-1 py-3 rounded-lg font-bold text-gray-700"
+        >
+          Login
+        </button>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <form id="signup-form" class="space-y-4">
+        <input
+          type="text"
+          id="signup-name"
+          placeholder="Full Name"
+          required
+          class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-300"
+        />
+
+        <input
+          type="email"
+          id="signup-email"
+          placeholder="Email Address"
+          required
+          class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-300"
+        />
+
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Password"
+          required
+          class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-300"
+        />
+
+        <button
+          type="submit"
+          class="w-full py-4 rounded-xl text-white font-bold text-xl shadow-md transition duration-300 hover:scale-105"
+          style="background: linear-gradient(to right, #f97316, #f59e0b);"
+        >
+          Create Account
+        </button>
+
+        <p
+          id="signup-message"
+          class="text-center text-green-700 font-semibold mt-3"
+        ></p>
+      </form>
+
+      <!-- LOGIN FORM -->
+      <form id="login-form" class="space-y-4 hidden">
+        <input
+          type="email"
+          id="login-email"
+          placeholder="Email Address"
+          required
+          class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-300"
+        />
+
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Password"
+          required
+          class="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-300"
+        />
+
+        <button
+          type="submit"
+          class="w-full py-4 rounded-xl text-white font-bold text-xl shadow-md transition duration-300 hover:scale-105"
+          style="background: linear-gradient(to right, #15803d, #166534);"
+        >
+          Login
+        </button>
+
+        <p
+          id="login-message"
+          class="text-center text-green-700 font-semibold mt-3"
+        ></p>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- ================= AUTH SECTION END ================= -->
+
+    </div>
+  </main>
+ 
+ 
+
+  <!-- Footer -->
+  <footer class="mt-12 text-white" style="background: linear-gradient(90deg, #b45309, #d97706, #b48b07);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:flex md:justify-between md:items-center">
+      <div class="mb-4 md:mb-0">
+        <p class="h-font text-xl font-bold">Shree Ji Health Center</p>
+        <p class="text-sm text-amber-100">Committed to your well-being.</p>
+      </div>
+      <div class="flex gap-6">
+        <a href="#home" data-page="home" class="nav-link hover:underline">Home</a>
+        <a href="#services" data-page="services" class="nav-link hover:underline">Services</a>
+        <a href="#about" data-page="about" class="nav-link hover:underline">About</a>
+        <a href="#contact" data-page="contact" class="nav-link hover:underline">Contact</a>
+      </div>
+      <p class="mt-4 md:mt-0 text-sm">&copy; 2025 Shree Ji Health Center. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const pageContents = document.querySelectorAll('.page-content');
+      const contactForm = document.getElementById('contact-form');
+      const appointmentForm = document.getElementById('appointment-form');
+
+      // Routing
+      const showPage = (pageId) => {
+        pageContents.forEach(p => p.classList.remove('active-page'));
+        const active = document.getElementById(pageId);
+        if (active) active.classList.add('active-page');
+
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === pageId));
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        history.pushState(null, '', `#${pageId}`);
+      };
+
+      const initialHash = window.location.hash.substring(1) || 'home';
+      showPage(initialHash);
+
+      navLinks.forEach(a => {
+        a.addEventListener('click', (e) => {
+          const pageId = a.getAttribute('data-page');
+          if (pageId) { e.preventDefault(); showPage(pageId); }
+        });
+      });
+
+      window.addEventListener('hashchange', () => {
+        const newHash = window.location.hash.substring(1) || 'home';
+        showPage(newHash);
+      });
+
+      // Mobile menu
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Flash message helper
+      const displayMessage = (containerId, message, ok) => {
+        const el = document.getElementById(containerId);
+        el.textContent = message;
+        el.classList.remove('hidden');
+        el.classList.remove('bg-red-100','text-red-700','bg-green-100','text-green-700');
+        if (ok) { el.classList.add('bg-green-100','text-green-700'); }
+        else { el.classList.add('bg-red-100','text-red-700'); }
+        setTimeout(() => el.classList.add('hidden'), 5000);
+      };
+
+      // Contact form (simulated)
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          setTimeout(() => {
+            displayMessage('contact-message', 'Thank you! We will respond within 24 hours.', true);
+            contactForm.reset();
+          }, 500);
+        });
+      }
+
+      // Appointment form (simulated + restrict past date)
+      if (appointmentForm) {
+        const dateInput = document.getElementById('appt-date');
+        if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+        appointmentForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('appt-name').value.trim();
+          const service = document.getElementById('appt-service').value;
+          const date = document.getElementById('appt-date').value;
+          const time = document.getElementById('appt-time').value;
+
+          if (!name || !service || !date || !time) {
+            displayMessage('appointment-message', 'Please fill in all required fields.', false);
+            return;
+          }
+          setTimeout(() => {
+            displayMessage('appointment-message', `Booking confirmed for ${name} on ${date} at ${time} for ${service}. See you soon!`, true);
+            appointmentForm.reset();
+          }, 700);
+        });
+      }
+      // Doctor search
+      const search = document.getElementById('doctor-search');
+      const list = document.getElementById('doctor-list');
+      if (search && list) {
+        search.addEventListener('keyup', () => {
+          const q = search.value.toLowerCase();
+          list.querySelectorAll('.card').forEach(card => {
+            card.style.display = card.textContent.toLowerCase().includes(q) ? 'flex' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
